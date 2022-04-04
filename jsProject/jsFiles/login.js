@@ -14,9 +14,10 @@ const passPattern =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
 const namePattern =  /^[a-z ]+$/gi;
 const emailPattern =/^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/i;
 
-registerbtn.addEventListener('click' , function(){
-
-    if(fullName.value!="" && email.value != ""&& phone.value!=""&&pass.value!="" && passConfirm!=""){
+registerbtn.addEventListener('click' , function(e){
+    e.preventDefault()
+   
+    if(fullName.value!="" && email.value != ""&& phone.value!=""&&pass.value!="" && passConfirm.value!=""){
         if(namePattern.test(fullName.value)){
 
             localStorage.setItem(`fullName`,`${fullName.value}`)
@@ -52,13 +53,24 @@ registerbtn.addEventListener('click' , function(){
         }
         if(!pass.value == passConfirm.value){
             passConfirm.style.border = "red 1px solid"
+            
         }else{
             passConfirm.style.border = ""
             passConfirm.value =""
         }
 
-    }
+        validateForm();
 
+
+
+    }else{
+        fullName.style.border = "red 1px solid"
+        email.style.border = "red 1px solid"
+        phone.style.border = "red 1px solid"
+        pass.style.border = "red 1px solid"
+        passConfirm.style.border = "red 1px solid"
+    }
+  
 })
 
 loginbtn.addEventListener("click",function(){
@@ -76,3 +88,9 @@ loginbtn.addEventListener("click",function(){
     }
 })
 
+function validateForm() {
+    alert("User Registered Successfully");
+    document.getElementById("reg-log").checked = false;
+    return true;
+    
+}

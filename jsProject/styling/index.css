@@ -20,7 +20,7 @@
 
   #logout{
     cursor: pointer;
-    grid-area: 2/ 18 / 3/ 20;
+    grid-area: 2/ 18 / 3/ 19;
     border: white 1px;
     border-radius: 35px;
     padding: 25px;
@@ -212,7 +212,7 @@ h1{
     border-style: none;
 }
 #fail{
-    background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+    /* background-image: linear-gradient(to top left, #e52a5a, #ff585f); */
     width: 90px;
     text-align: center;
     padding: 25px;
@@ -350,6 +350,39 @@ h1{
     font-style: italic;
 }
 
+/* 1024 screen style */
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+
+
+
+    h1{
+        grid-area:1/9/5/13;
+    }
+    
+    /* Scored section style  */
+    
+    #scoreCard{
+        grid-area: 5/3/9/19;
+    }
+    
+
+
+
+    /* show button style */
+
+        #show-analysis{
+            grid-area: 9/9/11/11;
+        }
+        #show-analysis{
+            padding: 15px;
+            font-size: 15px;
+            width: 150px;
+            margin: 20px;
+        }
+
+}
+
 /* media screen for tablet  */
 
 @media screen and (min-width: 426px) and (max-width: 768px) {
@@ -462,7 +495,7 @@ h1{
     /* show button style */
 
         #show-analysis{
-            grid-area: 7/9/11/11;
+            grid-area: 7/12/11/12;
         }
         #show-analysis{
             padding: 10px;

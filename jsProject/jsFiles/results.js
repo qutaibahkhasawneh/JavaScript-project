@@ -6,6 +6,7 @@ let showAnalysis = document.getElementById("show-analysis")
 let qustionsAnalysis = document.getElementById("qAnalysis")
 let singleQustion = document.getElementById("qustionPart")
 let logout = document.getElementById("logout")
+
 let resultCount = 0;
 let totalResult = 0;
 
@@ -19,12 +20,13 @@ x.open('GET', 'qustions.json')
 x.onload = function () {
     var result = JSON.parse(x.responseText)
 
+    //count the number of correct answers
     for (let i = 0; i < 20; i++) {
         if (sessionStorage.getItem(`${i+1}`) == result[i].correct) {
             resultCount++;
         }
     }
-    // console.log(resultCount)
+ 
     totalResult = (resultCount / 20) * 100;
 
 
@@ -35,11 +37,20 @@ x.onload = function () {
         <div id="score">Your score is: ${totalResult}% </div>
         <div id="fail">Fail</div>`
 
+        scoreCard.style.backgroundColor = "red"
+        scoreCard.style.opacity = .7;
+        scoreCard.style.color = "white"
+
     } else {
         scoreCard.innerHTML = `            
         <div id="congratulation--fail">congratulation!</div>
         <div id="score">Your score is: ${totalResult}% </div>
         <div id="pass">Pass</div>`
+
+        scoreCard.style.backgroundColor = "green"
+        scoreCard.style.opacity = .7;
+        scoreCard.style.color = "white"
+
     }
 
     let qustionData = ""
@@ -83,13 +94,10 @@ x.onload = function () {
                 
             }else if (l == sessionStorage.getItem(`${j+1}`)){
                 qqqq[l].setAttribute("class", "btn-fail")
+                
             }else{
-                qqqq[l].setAttribute("class", "btn")
+                qqqq[l].setAttribute("class", "btn-fail")
             }
-            
-            
-            
-            
         }
     }
 
